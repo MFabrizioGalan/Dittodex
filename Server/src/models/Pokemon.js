@@ -114,10 +114,22 @@ const Pokemon = (sequelize) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            stats: {
-                type: DataTypes.JSONB, 
+            hp: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
+            attack: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            defense: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            // stats: {
+            //     type: DataTypes.JSONB, 
+            //     allowNull: false,
+            // },
             // active: {
             //     type: DataTypes.BOOLEAN,
             //     defaultValue: true,

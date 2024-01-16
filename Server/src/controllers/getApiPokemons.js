@@ -30,7 +30,10 @@ const getApiPokemons = async () => {
                     name: stat.stat.name,
                     value: stat.base_stat,
                 }));
-
+                const statsObject = stats.reduce((acc, stat) => {
+                    acc[stat.name] = stat.value;
+                    return acc;
+                }, {});
                 return {
                     id: pokemonData.id,
                     name: pokemonData.name,
@@ -38,7 +41,15 @@ const getApiPokemons = async () => {
                     image: pokemonData.sprites.other['official-artwork'].front_default,
                     height: pokemonData.height,
                     weight: pokemonData.weight,
-                    stats: stats,
+                    hp: statsObject['hp'] || null,
+                    attack: statsObject['attack'] || null,
+                    defense: statsObject['defense'] || null,
+                    // specialAttack: statsObject['special-attack'] || null,
+                    // specialDefense: statsObject['special-defense'] || null,
+                    // speed: statsObject['speed'] || null,
+                    // accuracy: statsObject['accuracy'] || null,
+                    // evasion: statsObject['evasion'] || null,
+                    // stats: stats,
                 };
             });
 
