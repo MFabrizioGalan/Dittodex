@@ -22,9 +22,9 @@ const { getApiTypes } = require('../controllers/getApiTypes')
 
 const getPokemons = async (req, res) => {
     try {
-        // const pokemonDataArray = await getAllPokemons();
+        const pokemonDataArray = await getAllPokemons();
         console.log("hola")
-        const pokemonDataArray = await getApiTypes();
+        // const pokemonDataArray = await getApiTypes();
         console.log("Datos a enviar al cliente:", pokemonDataArray);
         res.json(pokemonDataArray);
     } catch (error) {
