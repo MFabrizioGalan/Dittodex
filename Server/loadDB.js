@@ -1,6 +1,6 @@
 const { Pokemon, Type, PokemonType } = require('./src/db');
-const { getApiPokemons } = require('./src/controllers/getApiPokemons');
-const { getApiTypes } = require('./src/controllers/getApiTypes');
+const { getApiPokemons } = require('./src/controllers/apis/getApiPokemons');
+const { getApiTypes } = require('./src/controllers/apis/getApiTypes');
 
 const loadDB = async () => {
     try {
