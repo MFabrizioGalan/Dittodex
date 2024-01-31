@@ -1,7 +1,11 @@
 const { Pokemon, Type } = require('../../db');
 
-const getAllPokemons = async () => {
+const getAllPokemons = async (page) => {
+    const itemsPerPage = 25;
+    const offset = (page - 1) * itemsPerPage;
     const pokemons = await Pokemon.findAll({
+        limit: itemsPerPage,
+        offset: offset,
         attributes: [
             'id',
             'name',
@@ -26,8 +30,13 @@ const getAllPokemons = async () => {
     if (pokemons.length === 0) {
         throw new Error('No hay pokemons para mostrar');
     }
+    const result = {
+        page: page,
+        count: pokemons.length,
+        pokemons: pokemons
+    } 
 
-return pokemons
+return result
 };
 
 module.exports = { getAllPokemons };
