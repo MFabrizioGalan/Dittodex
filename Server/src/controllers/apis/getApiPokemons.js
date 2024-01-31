@@ -2,13 +2,13 @@ const axios = require('axios');
 
 const getApiPokemons = async () => {
     try {
-        const totalPokemonCount = 10;
+        const totalPokemonCount = 100;
         const pokemonIds = Array.from({ length: totalPokemonCount }, (_, index) => index + 1);
 
         const responses = await Promise.all(
             pokemonIds.map(async (pokemonId) => {
                 try {
-                    console.log(`Obteniendo datos para el Pokemon con ID ${pokemonId}`);
+                    // console.log(`Obteniendo datos para el Pokemon con ID ${pokemonId}`);
                     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
                     return { success: true, data: response.data };
                 } catch (error) {

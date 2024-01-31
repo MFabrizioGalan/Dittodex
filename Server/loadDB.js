@@ -46,7 +46,7 @@ const loadDB = async () => {
                 });
 
                 for (const typeName of types) {
-                    console.log('Procesando tipo vinculado al Pokémon:', typeName);
+                    // console.log('Procesando tipo vinculado al Pokémon:', typeName);
 
                     const [createdType, created] = await Type.findOrCreate({
                         where: { name: typeName },
