@@ -7,7 +7,6 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        
       try {
         const allPokemon = await allPokemons(1);
         setPokemons(allPokemon.pokemons);
