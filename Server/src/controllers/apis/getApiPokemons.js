@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const getApiPokemons = async () => {
     try {
-        const totalPokemonCount = 100;
+        const totalPokemonCount = 1012;
         const pokemonIds = Array.from({ length: totalPokemonCount }, (_, index) => index + 1);
 
         const responses = await Promise.all(
