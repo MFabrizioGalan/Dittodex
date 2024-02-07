@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import pokelogo from "../../../logo/Logo_de_Pokemon.svg";
+import { useState } from 'react';
 
 
 const pages = ['Home', 'About', 'Contact'];
@@ -36,6 +37,9 @@ function NavBar() {
     setAnchorElUser(null);
   };
 
+  const [activeSesion, setActiveSesion] = useState(false);
+  
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -46,23 +50,7 @@ function NavBar() {
             alt="pokeLogo"
             style={{ height: '40px', marginRight: '1rem' }} // Ajusta el estilo según tus necesidades
           />
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 5,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '0.1rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            DittoDex
-          </Typography> */}
+
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
             <IconButton
@@ -100,25 +88,6 @@ function NavBar() {
               ))}
             </Menu>
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
-          {/* <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography> */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -130,8 +99,8 @@ function NavBar() {
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
+          {activeSesion === true ? (
+            <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -160,6 +129,8 @@ function NavBar() {
               ))}
             </Menu>
           </Box>
+          ) : null}
+          
         </Toolbar>
       </Container>
     </AppBar>

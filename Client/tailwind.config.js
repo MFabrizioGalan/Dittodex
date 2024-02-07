@@ -8,6 +8,8 @@ export default {
   theme: {
     extend: {
       colors: {
+      
+        
       },
       fontFamily: {
         'sans': ['Inter', 'sans-serif'],
