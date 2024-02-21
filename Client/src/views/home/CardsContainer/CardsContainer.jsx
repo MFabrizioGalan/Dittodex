@@ -8,7 +8,7 @@ const CardsContainer = () => {
     const error = useSelector((state) => state.pokemon.error);
 
     return (
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-center bg-purple-200">
             {pokemons.length ? (
                 pokemons.map(({ id, name, image, types }) => (
                     <div key={id} className="w-1/5 p-2">
@@ -20,9 +20,9 @@ const CardsContainer = () => {
                     {loading && !error ? (
                         <h1>Loading...</h1>
                     ) : error ? (
-                        <h1>There was an error</h1>
-                    ) : (
                         <h1>There are no items to show</h1>
+                    ) : (
+                        <h1>There was an error</h1>
                     )}
                 </div>
             )}

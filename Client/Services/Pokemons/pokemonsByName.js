@@ -1,23 +1,14 @@
 import axios from "axios";
+import { setLoading, setSearch, setError, setErrorSearch } from '../../src/redux/features/pokemonSlice'
 
-export const pokemonsByName = async (namePokemon) => {
-    return async (dispatch) => {
-        try {
-            const {data} = await axios.get('http://localhost:3001/pokemon?name=' + namePokemon);
-            dispatch(pokemonsByNameSuccess(data));
-        } catch (error) {
-            dispatch(pokemonsByNameFailure(error.response.data));
-        }
-
-    }
+export const pokemonsByName =  (namePokemon) => (dispatch) => {
+    dispatch(setLoading(true))
+    axios
+        .get('http://localhost:3001/pokemon?name=' + namePokemon)
+        .then((response) => {
+            dispatch(setSearch(response.data))
+        })
+        .catch((error) =>{
+            dispatch(setErrorSearch(error.message))
+        })
 }
-
-const pokemonsByNameSuccess = (data) => ({
-    type: "POKEMONS_BY_NAME_SUCCESS",
-    payload: data
-});
-
-const pokemonsByNameFailure = (error) => ({
-    type: "POKEMONS_BY_NAME_FAILURE",
-    payload: error
-});

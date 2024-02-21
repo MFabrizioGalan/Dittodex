@@ -7,7 +7,7 @@ const getPokemonsHandler = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     if (name) {
         try {
-            const pokemon = await getPokemonByName(name);
+            const pokemon = await getPokemonByName(name, page);
             return res.status(200).json(pokemon);
         } catch (error) {
             return res.status(400).json({ error: error.message });

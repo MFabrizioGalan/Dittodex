@@ -6,7 +6,7 @@ export const allPokemons = (page) => (dispatch) => {
     axios
         .get('http://localhost:3001/pokemon?page=' + page)
         .then((response) => {
-            dispatch(setPokemons(response.data.pokemons))
+            dispatch(setPokemons(response.data))
         })
         .catch((error) =>{
             dispatch(setError(error.message))

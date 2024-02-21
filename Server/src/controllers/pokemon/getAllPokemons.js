@@ -26,13 +26,15 @@ const getAllPokemons = async (page) => {
             },
         ],
     });
-
+    const number = await Pokemon.count();
+    const numberOfPages = Math.ceil(number / itemsPerPage);
     if (pokemons.length === 0) {
         throw new Error('No hay pokemons para mostrar');
     }
     const result = {
-        page: page,
+        currentPage: page,
         count: pokemons.length,
+        allPage: numberOfPages,
         pokemons: pokemons
     } 
 
