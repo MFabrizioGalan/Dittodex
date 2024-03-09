@@ -11,6 +11,7 @@ const initialState = {
     currentPage: "",
     allPage: "",
     copyPage: "",
+    searchTerm: ""
 };
 
 const pokemonSlice = createSlice({
@@ -53,9 +54,12 @@ const pokemonSlice = createSlice({
             state.allPokemons = [];
             state.search = [];
         },
+        setSearchTerm: (state, action) => {
+            state.searchTerm = action.payload;
+        }
     },
 });
 
-export const { setLoading,setPokemons, setError, setSearch, resetSearch, setErrorSearch } = pokemonSlice.actions;
+export const { setLoading,setPokemons, setError, setSearch, resetSearch, setErrorSearch, setSearchTerm } = pokemonSlice.actions;
 
 export default pokemonSlice.reducer;
